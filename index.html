@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>e.rosie archive</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="mainstyle.css">
+    </head>
+     <body>
+
+        <div class="hero">
+            <header class="site-header">
+                <a class="site-title" href="#home">e.rosie archive</a>
+                <nav class="top-nav" aria-label="Main navigation">
+                    <div class="page-links">
+                        <div class="nav-word-links">
+                            <a href="#home">HOME</a>
+                            <a href="#welcome-heading">ABOUT</a>
+                            <a href="#highlights">SHOP</a>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="gridwelcome" id="home">
+                <h2 id="welcome-heading">Welcome to </h2>
+                <h1 id="closet-heading">e.rosie archive</h1>
+                <p id="welcome-subtitle">take a peek!</p>
+                <img id="welcome-image" src="img/place.png" alt="closet">
+            </div>
+        </div>
+
+        <p class="highlights" id="highlights"> STYLE HIGHLIGHTS -  the closet menu</p>
+
+        <div class="grid1">
+
+            <a href="clothes.html"><img id="item1" src="img/place.png" alt="word"></a>
+            
+            <a href="clothes.html"><img id="item2" src="img/place.png" alt="word"></a>
+           
+            <a href="clothes.html"><img id="item3" src="img/place.png" alt="word"></a>
+
+            <a href="clothes.html"><img id="item4" src="img/place.png" alt="word"></a>
+           
+
+        </div>
+
+        <div class="rotating-closet">
+
+            <p class="style"> HOW WE STYLE...</p>
+
+            <img id="closet-image" src="img/place.png" alt="word">
+           
+
+        </div>
+
+        <section class="style-explore" aria-labelledby="style-explore-heading">
+            <h2 id="style-explore-heading">community highlights</h2>
+            <div class="style-filters" role="group" aria-label="Style highlights">
+                <button class="style-filter is-active" type="button" aria-pressed="true">
+                    <span class="filter-circle" aria-hidden="true"></span>
+                    <span>latest</span>
+                </button>
+                <button class="style-filter" type="button" aria-pressed="false">
+                    <span class="filter-circle" aria-hidden="true"></span>
+                    <span>trending</span>
+                </button>
+                <button class="style-filter" type="button" aria-pressed="false">
+                    <span class="filter-circle" aria-hidden="true"></span>
+                    <span>featured</span>
+                </button>
+                <button class="style-filter" type="button" aria-pressed="false">
+                    <span class="filter-circle" aria-hidden="true"></span>
+                    <span>style</span>
+                </button>
+            </div>
+
+            <div class="highlight-category">
+                <div class="style-cards">
+                    <figure class="style-card">
+                        <img src="img/place.png" alt="Casual outfit inspiration">
+                    </figure>
+                    <figure class="style-card">
+                        <img src="img/place.png" alt="Workwear outfit inspiration">
+                    </figure>
+                    <figure class="style-card">
+                        <img src="img/place.png" alt="Occasion outfit inspiration">
+                    </figure>
+                </div>
+
+                <div class="categories">
+                    <h2 id="categories-heading">CATEGORIES</h2>
+                    <p id="tops">TOPS</p>
+                    <p id="bottoms">BOTTOMS</p>
+                    <p id="shoes">SHOES</p>
+                    <p id="outerwear">OUTERWEAR</p>
+                    <p id="full-body">FULL BODY</p>
+                    <p id="accessories">ACCESSORIES</p>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            const styleFilters = document.querySelectorAll('.style-filter');
+
+            styleFilters.forEach((filterButton) => {
+                filterButton.addEventListener('click', () => {
+                    styleFilters.forEach((button) => {
+                        const isSelected = button === filterButton;
+                        button.classList.toggle('is-active', isSelected);
+                        button.setAttribute('aria-pressed', isSelected);
+                    });
+                });
+            });
+        </script>
+
+    </body>
+
+</html>
