@@ -17,9 +17,9 @@
                 <nav class="top-nav" aria-label="Main navigation">
                     <div class="page-links">
                         <div class="nav-word-links">
-                            <a href="#home">HOME</a>
-                            <a href="#welcome-heading">ABOUT</a>
-                            <a href="#highlights">SHOP</a>
+                            <a href="index.html">HOME</a>
+                            <a href="about/about.html">ABOUT</a>
+                            <a href="shop.html">SHOP</a>
                         </div>
                     </div>
                 </nav>
@@ -37,13 +37,13 @@
 
         <div class="grid1">
 
-            <a href="clothes.html"><img id="item1" src="img/place.png" alt="word"></a>
+            <a href="clothes1/clothes1.html"><img id="item1" src="img/place.png" alt="word"></a>
             
-            <a href="clothes.html"><img id="item2" src="img/place.png" alt="word"></a>
+            <a href="clothes2/clothes2.html"><img id="item2" src="img/place.png" alt="word"></a>
            
-            <a href="clothes.html"><img id="item3" src="img/place.png" alt="word"></a>
+            <a href="clothes3/clothes3.html"><img id="item3" src="img/place.png" alt="word"></a>
 
-            <a href="clothes.html"><img id="item4" src="img/place.png" alt="word"></a>
+            <a href="clothes4/clothes4.html"><img id="item4" src="img/place.png" alt="word"></a>
            
 
         </div>
@@ -57,27 +57,47 @@
 
         </div>
 
+        
         <section class="style-explore" aria-labelledby="style-explore-heading">
             <h2 id="style-explore-heading">community highlights</h2>
-            <div class="style-filters" role="group" aria-label="Style highlights">
-                <button class="style-filter is-active" type="button" aria-pressed="true">
-                    <span class="filter-circle" aria-hidden="true"></span>
-                    <span>latest</span>
-                </button>
-                <button class="style-filter" type="button" aria-pressed="false">
-                    <span class="filter-circle" aria-hidden="true"></span>
-                    <span>trending</span>
-                </button>
-                <button class="style-filter" type="button" aria-pressed="false">
-                    <span class="filter-circle" aria-hidden="true"></span>
-                    <span>featured</span>
-                </button>
-                <button class="style-filter" type="button" aria-pressed="false">
-                    <span class="filter-circle" aria-hidden="true"></span>
-                    <span>style</span>
-                </button>
-            </div>
 
+            <div class="style-filters" role="group" aria-label="Style highlights">
+
+                <button class="style-filter is-active" type="button"
+                    aria-pressed="true" data-video="vid/latest.mp4">
+                    <span class="filter-circle" aria-hidden="true"></span>
+                    <span id="latest">latest</span>
+                </button>
+
+                <button class="style-filter" type="button"
+                    aria-pressed="false" data-video="vid/trending.mp4">
+                    <span class="filter-circle" aria-hidden="true"></span>
+                    <span id="trending">trending</span>
+                </button>
+
+                <button class="style-filter" type="button"
+                    aria-pressed="false" data-video="vid/featured.mp4">
+                    <span class="filter-circle" aria-hidden="true"></span>
+                    <span id="featured">featured</span>
+                </button>
+
+                <button class="style-filter" type="button"
+                    aria-pressed="false" data-video="vid/style.mp4">
+                    <span class="filter-circle" aria-hidden="true"></span>
+                    <span id="stst">style</span>
+                </button>
+
+            </div>
+        </section>
+
+        <div id="videoPopup">
+            <video id="popupVideo" controls playsinline>
+                <source id="popupVideoSource" src="" type="video/mp4">
+                Your browser does not support this video.
+            </video>
+        </div>
+
+        <section class="styleslide">
             <div class="highlight-category">
                 <div class="style-cards">
                     <figure class="style-card">
@@ -93,12 +113,12 @@
 
                 <div class="categories">
                     <h2 id="categories-heading">CATEGORIES</h2>
-                    <p id="tops">TOPS</p>
-                    <p id="bottoms">BOTTOMS</p>
-                    <p id="shoes">SHOES</p>
-                    <p id="outerwear">OUTERWEAR</p>
-                    <p id="full-body">FULL BODY</p>
-                    <p id="accessories">ACCESSORIES</p>
+                    <a id="tops" href="categories/category_top.html">TOPS</a>
+                    <a id="bottoms" href="categories/category_bottom.html" >BOTTOMS</a>
+                    <a id="shoes" href="categories/category_shoe.html" >SHOES</a>
+                    <a id="outerwear" href="categories/category_outer.html" >OUTERWEAR</a>
+                    <a id="full-body" href="categories/category_full.html" >FULL BODY</a>
+                    <a id="accessories" href="categories/category_acc.html" >ACCESSORIES</a>
                 </div>
             </div>
         </section>
@@ -115,6 +135,55 @@
                     });
                 });
             });
+
+           
+const videoButtons = document.querySelectorAll(".style-filter");
+const videoPopup = document.getElementById("videoPopup");
+const popupVideo = document.getElementById("popupVideo");
+const popupVideoSource = document.getElementById("popupVideoSource");
+
+// Open the correct video when a category is clicked
+videoButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const videoPath = button.dataset.video;
+
+        popupVideo.pause();
+        popupVideoSource.src = videoPath;
+        popupVideo.load();
+
+        videoPopup.style.display = "flex";
+
+        popupVideo.play().catch((error) => {
+            console.log("Video playback could not start:", error);
+        });
+
+        // Update active category styling
+        videoButtons.forEach((item) => {
+            item.classList.remove("is-active");
+            item.setAttribute("aria-pressed", "false");
+        });
+
+        button.classList.add("is-active");
+        button.setAttribute("aria-pressed", "true");
+    });
+});
+
+// Close popup automatically when video ends
+popupVideo.addEventListener("ended", () => {
+    videoPopup.style.display = "none";
+    popupVideo.pause();
+    popupVideo.currentTime = 0;
+});
+
+// Close if the dark background is clicked
+videoPopup.addEventListener("click", (event) => {
+    if (event.target === videoPopup) {
+        videoPopup.style.display = "none";
+        popupVideo.pause();
+        popupVideo.currentTime = 0;
+    }
+});
+
         </script>
 
     </body>

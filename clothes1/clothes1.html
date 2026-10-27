@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>e.rosie archive</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="clothes1.css">
+    </head>
+     <body>
+
+        <div class="hero">
+            <header class="site-header">
+                <a class="site-title" href="index.html">e.rosie archive</a>
+                <nav class="top-nav" aria-label="Main navigation">
+                    <div class="page-links">
+                        <div class="nav-word-links">
+                            <a href="../index.html">HOME</a>
+                            <a href="../about.html">ABOUT</a>
+                            <a href="../shop.html">SHOP</a>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </div>
+
+        <a class="back-button" href="../index.html#highlights">← RETURN</a>
+
+        <div class="clothes-layout">
+            <div class="intro">
+                <img id="clothing" src="../img/place.png" alt="word">
+            </div>
+
+            <div class="grid2">
+                <img id="item5" src="../img/place.png" alt="word">
+                <p id="fashion">FASHION IN <br> ACTION </p>
+                <img id="item6" src="../img/place.png" alt="word">
+                <img id="item7" src="../img/place.png" alt="word">
+            </div>
+
+            <div class="item-details">
+                <h1 id="item-title">First Item</h1>
+                <p id="item-description">where its from</p>
+            </div>
+
+            <div class="info">
+                <h1 id="moreinfo">MORE INFO</h1>
+                <p id="info-description">why i love it</p>
+            </div>
+        </div>
+
+        <section class="faq-community-layout" aria-label="Product questions and community">
+            <div class="faqs">
+                <h2 id="faqs">frequently asked questions</h2>
+                <div class="faq-item">
+                    <p class="faq-question" tabindex="0">is it true to size?</p>
+                    <p class="faq-answer">yes</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question" tabindex="0">can i move comfortably?</p>
+                    <p class="faq-answer">yes</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question" tabindex="0">does it shrink in wash?</p>
+                    <p class="faq-answer">yes</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question" tabindex="0">what is it made of?</p>
+                    <p class="faq-answer">yes</p>
+                </div>
+            </div>
+
+
+            <section class="community" aria-labelledby="community-heading">
+                <h2 id="community-heading">community posts</h2>
+                <form class="comment-form" id="comment-form">
+                    <label for="comment-input">Share your thoughts about this piece</label>
+                    <textarea id="comment-input" name="comment" rows="3" placeholder="Add a comment..." required></textarea>
+                    <button type="submit">Post comment</button>
+                </form>
+                <div class="community-posts" id="community-posts" aria-live="polite">
+                    <article class="community-post">
+                        <p class="post-author">closet community</p>
+                        <p class="post-message">How would you style this piece?</p>
+                    </article>
+                </div>
+            </section>
+        </section>
+
+        <script>
+            const commentForm = document.querySelector('#comment-form');
+            const commentInput = document.querySelector('#comment-input');
+            const communityPosts = document.querySelector('#community-posts');
+
+            commentForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const comment = commentInput.value.trim();
+
+                if (!comment) return;
+
+                const post = document.createElement('article');
+                post.className = 'community-post';
+
+                const author = document.createElement('p');
+                author.className = 'post-author';
+                author.textContent = 'you';
+
+                const message = document.createElement('p');
+                message.className = 'post-message';
+                message.textContent = comment;
+
+                post.append(author, message);
+                communityPosts.prepend(post);
+                commentForm.reset();
+                commentInput.focus();
+            });
+        </script>
+
+    </body>

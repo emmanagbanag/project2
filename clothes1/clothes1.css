@@ -26,6 +26,24 @@
     min-height: 72px;
 }
 
+.back-button {
+    display: inline-block;
+    margin: 12px clamp(20px, 7vw, 100px);
+    margin-top: 2%;
+    padding: 9px 16px;
+    border: 1px solid #d89797;
+    border-radius: 999px;
+    color: #332a2a;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    background-color:pink;
+}
+
+.back-button:hover {
+    background-color: #f8e9e9;
+    color: #a65e5e;
+}
+
 body {
     background-color: #f5f5f5;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -120,6 +138,7 @@ body {
     row-gap: 4px;
     margin: 0;
     padding-top: clamp(24px, 4vw, 48px);
+    margin-top: 12%;
 }
 
 .clothes-layout {
@@ -128,6 +147,7 @@ body {
     align-items: start;
     gap: clamp(16px, 2.5vw, 36px);
     margin: 0 clamp(20px, 7vw, 100px);
+    margin-top: -4%;
 }
 
 #clothing {
@@ -143,6 +163,7 @@ body {
     grid-row: 2;
     align-self: start;
     padding-top: 12px;
+    margin-top: 17%;
 }
 
 .info {
@@ -151,6 +172,7 @@ body {
     width: 92%;
     justify-self: end;
     padding-top: 12px;
+    margin-top: 17%;
 }
 
 #item-title,
@@ -174,6 +196,7 @@ body {
     padding-top: clamp(24px, 4vw, 48px);
     width: 92%;
     justify-self: end;
+    margin-top: 12%;
 }
 
 .grid2 img {
@@ -289,6 +312,11 @@ body {
 .community {
     width: 80%;
     justify-self: end;
+    margin-top: 20%;
+}
+
+.faqs {
+    margin-top: 45%;
 }
 
 .faqs h2,
@@ -297,10 +325,36 @@ body {
     font-size: clamp(24px, 3vw, 36px);
 }
 
-.faqs p {
-    margin: 0;
+.faq-item {
+    position: relative;
     border-bottom: 1px solid #332a2a;
+}
+
+.faq-item p {
+    margin: 0;
     padding: 14px 0;
+}
+
+.faq-question {
+    cursor: pointer;
+}
+
+.faq-answer {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: left;
+    padding: 14px;
+    background: #f3dede;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.faq-item:hover .faq-answer,
+.faq-item:focus-within .faq-answer {
+    opacity: 1;
+    visibility: visible;
 }
 
 .comment-form {
@@ -373,6 +427,7 @@ body {
 .post-message {
     margin: 0;
     font-size: 16px;
+    align-items: left;
 }
 
 @media (max-width: 700px) {
@@ -380,3 +435,5 @@ body {
         grid-template-columns: minmax(0, 1fr);
     }
 }
+
+
