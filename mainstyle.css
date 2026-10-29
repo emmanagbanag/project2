@@ -2,6 +2,46 @@
     box-sizing: border-box;
 }
 
+img:not(#welcome-image, #closet-image, #item1, #item2, #item3, #item4) {
+    filter: grayscale(12%) sepia(18%) hue-rotate(290deg) saturate(85%);
+    opacity: 0.92;
+    transition: filter 250ms ease, opacity 250ms ease;
+}
+
+img:not(#welcome-image, #closet-image, #item1, #item2, #item3, #item4):hover {
+    filter: none;
+    opacity: 1;
+}
+
+
+body {
+    background-color: #fff5f7;
+    font-family: 'times', serif;
+    font-size: 20px;
+    color: #4F2B1F;
+    margin: 0;
+}
+
+@font-face {
+  font-family: 'times';
+    src: url('fonts/TIMESS__.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'faith';
+    src: url('fonts/faith.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'caroline';
+  src: url('fonts/Caroline.otf') format('opentype'),
+}
+
+@font-face {
+  font-family: 'provicali';
+  src: url('fonts/Provicali.otf') format('opentype'),
+}
+
 .grid1 {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -14,7 +54,7 @@
     grid-template-rows: repeat(3, auto);
     grid-template-columns: repeat(4, minmax(0, 1fr));
     align-content: center;
-    row-gap: clamp(2px, 0.5vw, 8px);
+    row-gap: clamp(40px, 0.5vw, 8px);
     width: 100%;
     min-height: clamp(380px, 60vw, 700px);
     padding-top: clamp(100px, 11vw, 150px);
@@ -27,12 +67,6 @@
     
 }
 
-body {
-    background-color: #f5f5f5;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 20px;
-    margin: 0;
-}
 
 .site-header {
     position: absolute;
@@ -96,39 +130,56 @@ body {
 }
 
 .nav-word-links a:hover {
-    color: #a65e5e;
+    color: #EFCEDB;
 }
 
 .nav-extra-link {
     width: 24px;
     height: 24px;
-    border: 1px solid #d89797;
+    border: 1px solid #EFCEDB;
     border-radius: 3px;
     background-color: #fff;
 }
 
 .nav-extra-link:hover {
-    background-color: #f8e9e9;
+    background-color: #EFCEDB;
 }
 
-#item1, #item2, #item3, #item4 {
-  transition: transform 0.3s ease-in-out; 
+.image-frame {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 130%;
+        aspect-ratio: 1.1 / 1;
+        overflow: hidden;
+        border: 10px solid #EFCEDB;
+        border-radius: 10px;
+        transition: transform 250ms ease;
 }
 
-#item1:hover {
-  transform: rotate(5deg); 
+.image-frame::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: #EFCEDB;
+        mix-blend-mode: color;
+        opacity: 0.22;
+        pointer-events: none;
+        transition: opacity 250ms ease;
 }
 
-#item2:hover {
-  transform: rotate(5deg); 
+.image-frame:hover::after {
+        opacity: 0;
 }
 
-#item3:hover {
-  transform: rotate(5deg); 
+.image-frame:has(> #item1):hover,
+.image-frame:has(> #item3):hover {
+        transform: rotate(5deg);
 }
 
-#item4:hover {
-  transform: rotate(5deg); 
+.image-frame:has(> #item2):hover,
+.image-frame:has(> #item4):hover {
+        transform: rotate(-5deg);
 }
 
 #item1 {
@@ -148,17 +199,20 @@ body {
 }
 
 #welcome-heading {
-    font-size: clamp(26px, 3.2vw, 40px);
+    font-size: clamp(350px, 3.2vw, 40px);
+    font-family: 'faith';
+    color: #EFCEDB;
     line-height: 1;
     margin: 0;
-    margin-left: clamp(20px, 7vw, 100px);
+    margin-left: clamp(20px, 7vw, 70px);
     grid-row: 1 / 2;
-    grid-column: 1 / 4;
+    grid-column: 1 / 5;
     z-index: 1;
 }
 
 #closet-heading {
-    font-size: clamp(36px, 5vw, 60px);
+    font-size: clamp(100px, 5vw, 60px);
+    font-family: 'times';
     line-height: 1;
     margin: 0;
     margin-left: clamp(20px, 7vw, 100px);
@@ -167,40 +221,45 @@ body {
     z-index: 1;
 }
 
-#welcome-subtitle {
-    font-size: clamp(16px, 2vw, 20px);
-    line-height: 1;
-    margin: 0;
-    margin-left: clamp(20px, 7vw, 100px);
-    grid-row: 3 / 4;
-    grid-column: 1 / 4;
-    z-index: 1;
-}
 
 #welcome-image {
     position: absolute;
     inset: 0;
     width: 100%;
-    height: 100%;
+    height: 140%;
     object-fit: cover;
     z-index: 0;
+    margin-bottom: 5%;
 }
 
 #item1, #item2, #item3, #item4 {
     width: 100%;
-    height: 130%;
-    aspect-ratio: 1.1 / 1;
+    height: 100%;
     object-fit: cover;
-    border-radius: 10px;
-    border: 10px solid #d89797;
+    border: 0;
 }
 
 .highlights {
     font-size: 24px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'times', serif;
     margin: 0 clamp(20px, 7vw, 100px) clamp(24px, 7vw, 100px);
-    margin-top: 12%;
+    margin-top: 22%;
     width: auto;
+}
+
+.highlight-title,
+.highlight-script {
+    display: inline;
+}
+
+.highlight-title {
+    font-size: 80px
+}
+
+.highlight-script {
+    font-family: 'faith', cursive;
+    color: #EFCEDB;
+    font-size: 100px;
 }
 
 @media (max-width: 800px) {
@@ -248,6 +307,7 @@ body {
 .style{
     margin: 200px 100px 100px 100px;
     margin-top: 20%;
+    font-size: 80px;
 }
 
 #closet-image {
@@ -259,11 +319,17 @@ body {
 
 .style-explore {
     margin: clamp(32px, 6vw, 80px) clamp(20px, 7vw, 100px);
+
 }
 
 .style-explore h2 {
     margin: 0 0 18px;
-    font-size: clamp(22px, 3vw, 32px);
+    font-size: clamp(120px, 3vw, 32px);
+    font-family: 'faith';
+    margin-top: -5%;
+    margin-bottom: -10%;
+    position: relative;
+    z-index: 0;
 }
 
 .style-filters {
@@ -271,7 +337,12 @@ body {
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: clamp(18px, 3vw, 36px);
+    position: relative;
+    z-index: 1;
+    margin-top: 120px;
     margin-bottom: 28px;
+    margin-left: 4%;
+    z-index: 999;
 }
 
 .style-filter {
@@ -293,17 +364,17 @@ body {
     width: 76px;
     height: 76px;
     flex: 0 0 76px;
-    border: 3px solid #d89797;
+    border: 3px solid #EFCEDB;
     border-radius: 50%;
-    background: #f8e9e9;
+    background: #EFCEDB;
     box-shadow: inset 0 0 0 3px #fff;
     transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
 }
 
 .style-filter:hover .filter-circle,
 .style-filter.is-active .filter-circle {
-    border-color: #a65e5e;
-    box-shadow: inset 0 0 0 3px #fff, 0 0 0 2px #a65e5e;
+    border-color: #EFCEDB;
+    box-shadow: inset 0 0 0 3px #fff, 0 0 0 2px #EFCEDB;
 }
 
 .style-filter:hover .filter-circle {
@@ -311,7 +382,7 @@ body {
 }
 
 .style-filter:focus-visible {
-    outline: 2px solid #a65e5e;
+    outline: 2px solid #EFCEDB;
     outline-offset: 4px;
 }
 
@@ -327,6 +398,7 @@ body {
     grid-template-columns: minmax(0, 3fr) minmax(220px, 1fr);
     align-items: start;
     gap: clamp(40px, 7vw, 100px);
+    margin-top: -63px;
 }
 
 .style-card {
@@ -403,27 +475,27 @@ body {
 }
 
 #tops:hover {
-    color: #a65e5e;
+    color: #EFCEDB;
 }
 
 #bottoms:hover {
-    color: #a65e5e;
+    color: #EFCEDB;
 }
 
 #shoes:hover {
-    color: #a65e5e;
+    color: #EFCEDB;
 }
 
 #outerwear:hover {
-    color: #a65e5e;
+    color: #EFCEDB;
 }
 
 #full-body:hover {
-    color: #a65e5e;
+    color: #EFCEDB;
 }
 
 #accessories:hover {
-    color: #a65e5e;
+    color: #EFCEDB;
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
@@ -481,4 +553,8 @@ body {
 .styleslide {
     max-width: 90%;
     margin: 0 auto;
+}
+
+.gap {
+    height: 50%;
 }

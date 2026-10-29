@@ -1,5 +1,21 @@
+@font-face {
+    font-family: 'times';
+    src: url('../fonts/TIMESS__.ttf') format('truetype');
+}
+
 * {
     box-sizing: border-box;
+}
+
+img {
+    filter: grayscale(12%) sepia(18%) hue-rotate(290deg) saturate(85%);
+    opacity: 0.92;
+    transition: filter 250ms ease, opacity 250ms ease;
+}
+
+img:hover {
+    filter: none;
+    opacity: 1;
 }
 
 .grid1 {
@@ -50,8 +66,8 @@
 }
 
 body {
-    background-color: #f5f5f5;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #fff5f7;
+    font-family: 'times', serif;
     font-size: 20px;
     margin: 0;
 }
@@ -67,7 +83,7 @@ body {
     gap: 24px;
     width: 100%;
     padding: 16px clamp(20px, 7vw, 100px);
-    background-color: #f5f5f5;
+    background-color: #fff5f7;
     box-shadow: 0 2px 10px rgb(51 42 42 / 8%);
 }
 
@@ -140,7 +156,7 @@ body {
 
 .highlights {
     font-size: 24px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'times', serif;
     margin: 0 clamp(20px, 7vw, 100px) clamp(24px, 7vw, 100px);
     width: auto;
     margin-top: 5%;
@@ -152,7 +168,7 @@ body {
     gap: clamp(12px, 3vw, 40px);
     margin: clamp(20px, 7vw, 100px);
     margin-top: -4%;
-    margin-bottom: 10%;
+    margin-bottom: 18%;
 }
 
 #item1, #item5, #item9 {
@@ -178,21 +194,48 @@ body {
 }
 
 #item1, #item3, #item4, #item5, #item6, #item7, #item9, #item10, #item12, #item8, #item11 {
-    width: 100%;
-    height:130%;
-    aspect-ratio: 1.1 / 1;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 10px solid #d89797;
+    grid-column: auto;
 }
 
-#item2 {
+.image-frame {
+    position: relative;
+    display: block;
     width: 100%;
-    height:130%;
+    height: 130%;
     aspect-ratio: 1.1 / 1;
-    object-fit: cover;
+    overflow: hidden;
     border-radius: 10px;
-    border: 10px solid #fbef6b;
+    border: 10px solid #EFCEDB;
+    margin-bottom: 10%;
+}
+
+.image-frame--brown {
+    border-color: #4F2B1F;
+}
+
+.image-frame > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+    filter: none;
+    opacity: 1;
+}
+
+.image-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #EFCEDB;
+    mix-blend-mode: color;
+    opacity: 0.22;
+    pointer-events: none;
+    transition: opacity 250ms ease;
+}
+
+.image-frame:hover::after {
+    opacity: 0;
 }
 
 

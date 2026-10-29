@@ -1,5 +1,21 @@
+@font-face {
+    font-family: 'times';
+    src: url('../fonts/TIMESS__.ttf') format('truetype');
+}
+
 * {
     box-sizing: border-box;
+}
+
+img {
+    filter: grayscale(12%) sepia(18%) hue-rotate(290deg) saturate(85%);
+    opacity: 0.92;
+    transition: filter 250ms ease, opacity 250ms ease;
+}
+
+img:hover {
+    filter: none;
+    opacity: 1;
 }
 
 .grid1 {
@@ -27,8 +43,8 @@
 }
 
 body {
-    background-color: #f5f5f5;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #fff5f7;
+    font-family: 'times', serif;
     font-size: 20px;
     margin: 0;
 }
@@ -44,7 +60,7 @@ body {
     gap: 24px;
     width: 100%;
     padding: 16px clamp(20px, 7vw, 100px);
-    background-color: #f5f5f5;
+    background-color: #fff5f7;
     box-shadow: 0 2px 10px rgb(51 42 42 / 8%);
 }
 
