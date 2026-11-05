@@ -13,7 +13,7 @@
 
         <div class="hero">
             <header class="site-header">
-                <a class="site-title" href="#home">e. THE CATALOG</a>
+                <a class="site-title" href="https://web.fits-app.com/@babyyrosie" target="_blank" rel="noopener noreferrer">e. THE CATALOG</a>
                 <nav class="top-nav" aria-label="Main navigation">
                     <div class="page-links">
                         <div class="nav-word-links">
@@ -28,7 +28,7 @@
             <div class="gridwelcome" id="home">
                 <h2 id="welcome-heading">Welcome to </h2>
                 <h1 id="closet-heading">e. THE CATALOG</h1>
-                <img id="welcome-image" src="img/place.png" alt="closet">
+                <img id="welcome-image" src="img/cover.JPEG" alt="closet">
             </div>
         </div>
 
@@ -36,13 +36,13 @@
 
         <div class="grid1">
 
-            <a href="clothes1/clothes1.html"><span class="image-frame"><img id="item1" src="img/place.png" alt="word"></span></a>
+            <a href="clothes/clothes1.html"><span class="image-frame"><img id="item1" src="img/tops/red1.PNG" alt="word"></span></a>
             
-            <a href="clothes2/clothes2.html"><span class="image-frame"><img id="item2" src="img/place.png" alt="word"></span></a>
+            <a href="clothes/clothes2.html"><span class="image-frame"><img id="item2" src="img/jacket1.PNG" alt="word"></span></a>
            
-            <a href="clothes3/clothes3.html"><span class="image-frame"><img id="item3" src="img/place.png" alt="word"></span></a>
+            <a href="clothes/clothes3.html"><span class="image-frame"><img id="item3" src="img/bottoms/skirt2.PNG" alt="word"></span></a>
 
-            <a href="clothes4/clothes4.html"><span class="image-frame"><img id="item4" src="img/place.png" alt="word"></span></a>
+            <a href="clothes/clothes4.html"><span class="image-frame"><img id="item4" src="img/shoes/boot2.PNG" alt="word"></span></a>
            
 
         </div>
@@ -51,8 +51,10 @@
 
             <p class="style"> HOW WE STYLE...</p>
 
-            <img id="closet-image" src="img/place.png" alt="word">
-           
+            <video id="closet-vid" autoplay loop muted playsinline>
+                <source src="img/swipe.mp4" type="video/mp4"> 
+                Your browser does not support this video.
+            </video>
 
         </div>
 
@@ -63,25 +65,25 @@
             <div class="style-filters" role="group" aria-label="Style highlights">
 
                 <button class="style-filter is-active" type="button"
-                    aria-pressed="true" data-video="vid/latest.mp4">
+                    aria-pressed="true" data-video="img/vid1.mp4">
                     <span class="filter-circle" aria-hidden="true"></span>
                     <span id="latest">latest</span>
                 </button>
 
                 <button class="style-filter" type="button"
-                    aria-pressed="false" data-video="vid/trending.mp4">
+                    aria-pressed="false" data-video="img/vid2.mp4">
                     <span class="filter-circle" aria-hidden="true"></span>
                     <span id="trending">trending</span>
                 </button>
 
                 <button class="style-filter" type="button"
-                    aria-pressed="false" data-video="vid/featured.mp4">
+                    aria-pressed="false" data-video="img/vid3.mp4">
                     <span class="filter-circle" aria-hidden="true"></span>
                     <span id="featured">featured</span>
                 </button>
 
                 <button class="style-filter" type="button"
-                    aria-pressed="false" data-video="vid/style.mp4">
+                    aria-pressed="false" data-video="img/vid4.mp4">
                     <span class="filter-circle" aria-hidden="true"></span>
                     <span id="stst">style</span>
                 </button>
@@ -98,15 +100,15 @@
 
         <section class="styleslide">
             <div class="highlight-category">
-                <div class="style-cards">
+                <div class="style-cards" id="style-cards">
                     <figure class="style-card">
-                        <img src="img/place.png" alt="Casual outfit inspiration">
+                        <img src="img/style1.jpg" alt="Casual outfit inspiration">
                     </figure>
                     <figure class="style-card">
-                        <img src="img/place.png" alt="Workwear outfit inspiration">
+                        <img src="img/style2.jpg" alt="Workwear outfit inspiration">
                     </figure>
                     <figure class="style-card">
-                        <img src="img/place.png" alt="Occasion outfit inspiration">
+                        <img src="img/style3.jpg" alt="Occasion outfit inspiration">
                     </figure>
                 </div>
 
@@ -114,10 +116,9 @@
                     <h2 id="categories-heading">CATEGORIES</h2>
                     <a id="tops" href="categories/category_top.html">TOPS</a>
                     <a id="bottoms" href="categories/category_bottom.html" >BOTTOMS</a>
-                    <a id="shoes" href="categories/category_shoe.html" >SHOES</a>
+                    <a id="shoes" href="categories/category_shoes.html" >SHOES</a>
                     <a id="outerwear" href="categories/category_outer.html" >OUTERWEAR</a>
-                    <a id="full-body" href="categories/category_full.html" >FULL BODY</a>
-                    <a id="accessories" href="categories/category_acc.html" >ACCESSORIES</a>
+                    <a id="accessories" href="categories/category_accessories.html" >ACCESSORIES</a>
                 </div>
             </div>
         </section>
@@ -125,6 +126,15 @@
         <section class="gap"></section>
 
         <script>
+            window.addEventListener('load', () => {
+                if (window.location.hash === '#style-cards') {
+                    document.getElementById('style-cards')?.scrollIntoView({
+                        behavior: 'instant',
+                        block: 'start'
+                    });
+                }
+            });
+
             const styleFilters = document.querySelectorAll('.style-filter');
 
             styleFilters.forEach((filterButton) => {
@@ -187,6 +197,7 @@ videoPopup.addEventListener("click", (event) => {
 
         </script>
 
+        <a class="back-to-top" href="#" aria-label="Back to top" title="Back to top">↑</a>
     </body>
 
 </html>

@@ -2,15 +2,50 @@
     box-sizing: border-box;
 }
 
-img:not(#welcome-image, #closet-image, #item1, #item2, #item3, #item4) {
+html {
+    scroll-behavior: smooth;
+}
+
+img:not(#welcome-image, #closet-vid, #item1, #item2, #item3, #item4, .style-card img) {
     filter: grayscale(12%) sepia(18%) hue-rotate(290deg) saturate(85%);
     opacity: 0.92;
     transition: filter 250ms ease, opacity 250ms ease;
 }
 
-img:not(#welcome-image, #closet-image, #item1, #item2, #item3, #item4):hover {
+img:not(#welcome-image, #closet-vid, #item1, #item2, #item3, #item4, .style-card img):hover {
     filter: none;
     opacity: 1;
+}
+
+.back-to-top {
+    position: fixed;
+    left: 20px;
+    bottom: 40px;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border: 2px solid #EFCEDB;
+    border-radius: 50%;
+    background: #fff5f7;
+    color: #4F2B1F;
+    font-family: Arial, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    opacity: 0.9;
+    transition: opacity 200ms ease;
+}
+
+.back-to-top:hover {
+    opacity: 0.45;
+}
+
+.back-to-top:focus-visible {
+    outline: 2px solid #4F2B1F;
+    outline-offset: 3px;
 }
 
 
@@ -130,7 +165,7 @@ body {
 }
 
 .nav-word-links a:hover {
-    color: #EFCEDB;
+    color: #a65e5e;
 }
 
 .nav-extra-link {
@@ -162,8 +197,8 @@ body {
         position: absolute;
         inset: 0;
         background: #EFCEDB;
-        mix-blend-mode: color;
-        opacity: 0.22;
+        mix-blend-mode: normal;
+        opacity: 0.3;
         pointer-events: none;
         transition: opacity 250ms ease;
 }
@@ -230,12 +265,13 @@ body {
     object-fit: cover;
     z-index: 0;
     margin-bottom: 5%;
+    opacity: 0.4;
 }
 
 #item1, #item2, #item3, #item4 {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border: 0;
 }
 
@@ -310,7 +346,7 @@ body {
     font-size: 80px;
 }
 
-#closet-image {
+#closet-vid {
     width: 90%;
     height: auto;
     display: block;
@@ -404,14 +440,15 @@ body {
 .style-card {
     min-width: 0;
     margin: 0;
+    margin-bottom: 20%;
 }
 
 .style-card img {
     display: block;
     width: 100%;
-    height: auto;
     aspect-ratio: 3 / 4;
     border-radius: 22px;
+    border: 10px solid #EFCEDB;
     object-fit: cover;
 }
 

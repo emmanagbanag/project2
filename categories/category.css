@@ -3,8 +3,48 @@
     src: url('../fonts/TIMESS__.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'faith';
+    src: url('../fonts/faith.otf') format('opentype');
+}
+
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.back-to-top {
+    position: fixed;
+    left: 20px;
+    bottom: 40px;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border: 2px solid #EFCEDB;
+    border-radius: 50%;
+    background: #fff5f7;
+    color: #4F2B1F;
+    font-family: Arial, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    opacity: 0.9;
+    transition: opacity 200ms ease;
+}
+
+.back-to-top:hover {
+    opacity: 0.45;
+}
+
+.back-to-top:focus-visible {
+    outline: 2px solid #4F2B1F;
+    outline-offset: 3px;
 }
 
 img {
@@ -53,6 +93,7 @@ img:hover {
     text-decoration: none;
     background-color: pink;
     transition: background-color 0.2s ease, color 0.2s ease;
+    margin-bottom: -15%;
 }
 
 .back-button:hover {
@@ -70,6 +111,7 @@ body {
     font-family: 'times', serif;
     font-size: 20px;
     margin: 0;
+    counter-reset: clothing-item;
 }
 
 .site-header {
@@ -160,9 +202,11 @@ body {
     margin: 0 clamp(20px, 7vw, 100px) clamp(24px, 7vw, 100px);
     width: auto;
     margin-top: 5%;
+    transform: rotate(-3deg);
+    margin-bottom: 10%;
 }
 
-.grid1, .grid2, .grid3 {
+.grid1, .grid2, .grid3, .grid4, .grid5, .grid6 {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: clamp(12px, 3vw, 40px);
@@ -188,7 +232,7 @@ body {
 }
 
 @media (max-width: 480px) {
-    .grid1, .grid2, .grid3 {
+    .grid1, .grid2, .grid3, .grid4, .grid5, .grid6 {
         grid-template-columns: minmax(0, 1fr);
     }
 }
@@ -203,10 +247,11 @@ body {
     width: 100%;
     height: 130%;
     aspect-ratio: 1.1 / 1;
-    overflow: hidden;
+    overflow: visible;
     border-radius: 10px;
     border: 10px solid #EFCEDB;
     margin-bottom: 10%;
+    counter-increment: clothing-item;
 }
 
 .image-frame--brown {
@@ -217,7 +262,7 @@ body {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border: 0;
     filter: none;
     opacity: 1;
@@ -228,10 +273,26 @@ body {
     position: absolute;
     inset: 0;
     background: #EFCEDB;
-    mix-blend-mode: color;
-    opacity: 0.22;
+    mix-blend-mode: normal;
+    opacity: 0.3;
     pointer-events: none;
     transition: opacity 250ms ease;
+    z-index: 1;
+}
+
+.image-frame::before {
+    content: counter(clothing-item);
+    position: absolute;
+    bottom: -22px;
+    left: -8px;
+    z-index: 2;
+    color: #4F2B1F;
+    font-family: 'faith', serif;
+    font-size: 72px;
+    font-weight: 800;
+    line-height: 1;
+    text-shadow: 0 0 3px #fff, 2px 2px 4px rgb(255 255 255 / 90%);
+    pointer-events: none;
 }
 
 .image-frame:hover::after {
